@@ -25,10 +25,6 @@ public:
     ActiveLow = 0,
     ActiveHigh,
   };
-  enum State { // TODO: This should just be bool
-    Off = 0, // false
-    On = 1, // true
-  };
   Output(uint8_t pin, Polarity active_high = ActiveHigh)
     : _pin(pin)
     , _invert(!active_high)
@@ -42,25 +38,17 @@ public:
   { pinMode(_pin, INPUT); }
 
   void set(bool on)
-  { set((on) ? State::On : State::Off); }
-  void set(State on)
   { digitalWrite(_pin, ((!!on) ^ _invert) ? HIGH : LOW); }
-
   void on()
-  { set(State::On); }
+  { set(true); }
   void off()
-  { set(State::Off); }
+  { set(false); }
 
   void toggle() // Non-reentrant
   { set(!state()); }
 
-  State state() const
+  bool state() const // True iff active
   {
-    if (digitalRead(_pin) == ((_invert) ? LOW : HIGH))
-      return Output::State::On;
-    return Output::State::Off;
+    return digitalRead(_pin) == ((_invert) ? LOW : HIGH);
   }
 };
-
-Output::State operator!(Output::State s)
-{ return (s) ? Output::State::Off : Output::State::On; }
