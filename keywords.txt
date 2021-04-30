@@ -1,0 +1,22 @@
+# Datatypes (KEYWORD1)
+Output	KEYWORD1
+Polarity	KEYWORD1
+State	KEYWORD1
+
+
+# Methods and Functions (KEYWORD2)
+begin	KEYWORD2
+end	KEYWORD2
+set	KEYWORD2
+on	KEYWORD2
+off	KEYWORD2
+toggle	KEYWORD2
+state	KEYWORD2
+
+# Instances (KEYWORD2)
+
+# Constants (LITERAL1)
+ActiveLow	LITERAL1
+ActiveHigh	LITERAL1
+Off	LITERAL1
+On	LITERAL1
